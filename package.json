@@ -23,6 +23,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.1.0",
     "@fortawesome/free-regular-svg-icons": "^6.1.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "date-fns": "^2.29.3",
     "rxjs": "~7.5.0",
     "spotify-web-api-js": "^1.5.2",
     "tslib": "^2.3.0",
