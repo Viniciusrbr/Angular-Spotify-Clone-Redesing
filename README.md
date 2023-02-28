@@ -1,27 +1,42 @@
-# AngularSpotify
+## Clone do Spotify e Redesing com Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+Essse projeto foi feito acompanhando uma [serie de videos](https://www.youtube.com/playlist?list=PLMFE0Mu3BVy63bmSR92QbTR_rU576VOxg) ministradas por [Cristian William](https://github.com/cristianWilliam/Spotify-Angular) em seu canal no [Youtube](https://www.youtube.com/channel/UC5XGkx6CoGC5HsJ3INJBKXg).
 
-## Development server
+O projeto busca exploxar os recursos do framework [Angular](https://github.com/angular/angular), abordando conceitos relacionados como [SCSS](https://sass-lang.com/), [Typescript](https://www.typescriptlang.org/) e utlização da API do [Spotify](https://www.spotify.com/br/) para obtenção de dados.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<h3>‼️Importante</h3>
+<ul>
+  <li>Nescessario ter um conta premium do Spotify para poder usar todos os recursos</li>
+</ul>
 
-## Code scaffolding
+<h3>Sobre o projeto: </h3>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+• Feito em [Angular CLI](https://github.com/angular/angular-cli) versão 14.2.7.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 💾Instalação
+Abra um pasta e faça um clone do projeto em sua maquina
 
-## Running unit tests
+```
+    git clone git@github.com:Viniciusrbr/Angular-Spotify-Clone-Redesing.git
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ou
 
-## Running end-to-end tests
+```
+    git clone https://github.com/Viniciusrbr/Angular-Spotify-Clone-Redesing.git
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## ▶️Execução do Projeto
+Depois de ter o projeto clonado, instale as dependências do Node:
 
-## Further help
+```
+    npm install
+```
+Em seguida execute o seguinte comando:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+    ng serve 
+```
+
+Depois acesse a aplicação através do endereço http://localhost:4200
