@@ -3,18 +3,17 @@
 .container {
   width: 100%;
   height: 100%;
-  max-width: 200px;
+  max-width: 300px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  
 
   .image {
     height: 65%;
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
-    opacity: .7;
+    opacity: .8;
   }
 
   .controles {

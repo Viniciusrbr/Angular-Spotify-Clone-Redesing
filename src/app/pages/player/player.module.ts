@@ -13,7 +13,9 @@ import { TopArtistaComponent } from 'src/app/components/top-artista/top-artista.
 import { TopArtistasComponent } from 'src/app/components/top-artistas/top-artistas.component';
 
 import { HomeComponent } from '../home/home.component';
+import { BannerComponent } from './../../components/banner/banner.component';
 import { PlayerCardComponent } from './../../components/player-card/player-card.component';
+import { ListaMusicaComponent } from './../lista-musica/lista-musica.component';
 import { PlayerComponent } from './player.component';
 import { PlayerRotas } from './player.routes';
 
@@ -21,6 +23,7 @@ import { PlayerRotas } from './player.routes';
 @NgModule({
   declarations: [
     PlayerComponent,
+    ListaMusicaComponent,
     PainelEsquerdoComponent,
     BotaoMenuComponent,
     RodapeUsuarioComponent,
@@ -31,6 +34,7 @@ import { PlayerRotas } from './player.routes';
     TopArtistasComponent,
     ArtistaItemImagemComponent,
     PlayerCardComponent,
+    BannerComponent,
   ],
   imports: [
     CommonModule,

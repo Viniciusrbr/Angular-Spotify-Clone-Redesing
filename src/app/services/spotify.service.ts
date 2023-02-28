@@ -79,6 +79,20 @@ export class SpotifyService {
     return playlists.items.map(SpotifyPlaylistParaPlaylist);
   }
 
+  async buscarMusicasPlaylist(playlistId: string, offset = 0, limit = 50) {
+    const playlistSpotify = await this.spotifyApi.getPlaylist(playlistId);
+
+    if(!playlistSpotify)
+      return null;
+
+    const playlist = SpotifyPlaylistParaPlaylist(playlistSpotify);
+
+    const musicasSpotify = await this.spotifyApi.getPlaylistTracks(playlistId, { offset, limit });
+    playlist.musicas = musicasSpotify.items.map(x => SpotifyTrackParaMusica(x.track as SpotifyApi.TrackObjectFull));
+
+    return playlist;
+  }
+
   async buscarTopArtistas(limit = 10): Promise<IArtista[]> {
     const artistas = await this.spotifyApi.getMyTopArtists({ limit });
     return artistas.items.map(SpotifyArtistaParaArtista);
