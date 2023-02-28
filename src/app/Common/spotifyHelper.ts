@@ -3,6 +3,7 @@ import { IArtista } from "../interfaces/IArtista";
 import { IMusica } from "../interfaces/IMusica";
 import { IPlaylist } from "../interfaces/IPlaylist";
 import { IUsuario } from "../interfaces/IUsuario";
+import { newMusica } from "./factories";
 
 export function SpotifyUserParaUsuario(user: SpotifyApi.CurrentUsersProfileResponse): IUsuario {
     return {
@@ -21,21 +22,22 @@ export function SpotifyPlaylistParaPlaylist(playlist: SpotifyApi.PlaylistObjectS
 }
 
 export function SpotifyArtistaParaArtista(spotifyArtista: SpotifyApi.ArtistObjectFull): IArtista {
-    const sortedImages = spotifyArtista.images.sort((a, b) => a.width - b.width);
     return {
         id: spotifyArtista.id,
-        name: spotifyArtista.name,
-        imagemUrl: sortedImages.pop().url
+        imagemUrl: spotifyArtista.images.sort((a, b) => a.width - b.width).pop().url,
+        nome: spotifyArtista.name
     };
 }
 
 export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull): IMusica {
 
+    if (!spotifyTrack)
+        return newMusica();
+
     const msParaMinutos = (ms: number) => {
         const data = addMilliseconds(new Date(0), ms);
         return format(data, 'mm:ss');
     }
-
 
     return {
         id: spotifyTrack.uri,
@@ -50,5 +52,5 @@ export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull)
             nome: artista.name
         })),
         tempo: msParaMinutos(spotifyTrack.duration_ms),
-    };
+    }
 }

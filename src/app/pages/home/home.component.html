@@ -19,11 +19,14 @@
                 <th class="w-20">Album</th>
             </tr>
         </thead>
-
         <tbody>
-            <tr *ngFor="let musica of musicas" (clik)="executarMusica(musica)">
+            <tr 
+            *ngFor="let musica of musicas" 
+            (click)="executarMusica(musica)"
+            [class.executando]="musica.id === musicaAtual.id">
+
                 <td>
-                     <fa-icon class="play" [icon]="playIcone"></fa-icon> 
+                    <fa-icon class="play" [icon]="playIcone"></fa-icon>
                 </td>
 
                 <td>{{ musica.titulo }}</td>
@@ -32,10 +35,8 @@
                 <td>{{ musica.album.nome }}</td>
             </tr>
         </tbody>
-
     </table>
 
 </div>
-
 
 <app-painel-direito class="painel-direito"></app-painel-direito>

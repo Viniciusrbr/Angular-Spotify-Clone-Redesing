@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
-import { SpotifyConfiguration } from 'src/environments/environment';
-import Spotify from 'spotify-web-api-js';
-import { IUsuario } from '../interfaces/IUsuario';
-import { SpotifyArtistaParaArtista, SpotifyPlaylistParaPlaylist, SpotifyTrackParaMusica, SpotifyUserParaUsuario } from '../Common/spotifyHelper';
-import { IPlaylist } from '../interfaces/IPlaylist';
 import { Router } from '@angular/router';
+import Spotify from 'spotify-web-api-js';
+import { SpotifyConfiguration } from 'src/environments/environment';
+
+import {
+  SpotifyArtistaParaArtista,
+  SpotifyPlaylistParaPlaylist,
+  SpotifyTrackParaMusica,
+  SpotifyUserParaUsuario,
+} from '../Common/spotifyHelper';
 import { IArtista } from '../interfaces/IArtista';
 import { IMusica } from '../interfaces/IMusica';
+import { IPlaylist } from '../interfaces/IPlaylist';
+import { IUsuario } from '../interfaces/IUsuario';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +22,7 @@ export class SpotifyService {
   spotifyApi: Spotify.SpotifyWebApiJs = null;
   usuario: IUsuario;
 
-  constructor( private router: Router ) {
+  constructor(private router: Router) {
     this.spotifyApi = new Spotify();
   }
 
@@ -78,7 +84,7 @@ export class SpotifyService {
     return artistas.items.map(SpotifyArtistaParaArtista);
   }
 
-  async buscarMusicas(offset =0, limit=50): Promise<IMusica[]> {
+  async buscarMusicas(offset = 0, limit = 50): Promise<IMusica[]> {
     const musicas = await this.spotifyApi.getMySavedTracks({ offset, limit });
     return musicas.items.map(x => SpotifyTrackParaMusica(x.track));
   }
@@ -88,7 +94,20 @@ export class SpotifyService {
     await this.spotifyApi.skipToNext();
   }
 
-  logout(){
+  async obterMusicaAtual(): Promise<IMusica> {
+    const musicaSpotify = await this.spotifyApi.getMyCurrentPlaybackState();
+    return SpotifyTrackParaMusica(musicaSpotify.item);
+  }
+
+  async voltarMusica() {
+    await this.spotifyApi.skipToPrevious();
+  }
+
+  async proximaMusica() {
+    await this.spotifyApi.skipToNext();
+  }
+
+  logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
   }

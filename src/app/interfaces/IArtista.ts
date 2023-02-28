@@ -1,5 +1,8 @@
+import { IMusica } from "./IMusica";
+
 export interface IArtista {
-    id: string,
-    name: string,
-    imagemUrl: string,
+  id: string,
+  nome: string,
+  imagemUrl: string,
+  musicas?: IMusica[]
 }
