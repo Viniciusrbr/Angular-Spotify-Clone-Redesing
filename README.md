@@ -7,7 +7,7 @@ O projeto busca exploxar os recursos do framework [Angular](https://github.com/a
 <h3>‼️Importante</h3>
 <ul>
   <li>Nescessario ter um conta premium do Spotify para poder usar todos os recursos</li>
-  <li>É nescessario ter o seu propio Client ID do spotify e colocar eles nos 2 arquivos de environmment</li>
+  <li>É nescessario ter o seu propio Client ID do spotify e colocar ele nos 2 arquivos de environmment</li>
 </ul>
 
 <h3>Sobre o projeto: </h3>
