@@ -13,6 +13,8 @@ export class PlayerService {
   musicaAtual = new BehaviorSubject<IMusica>(newMusica());
   timerId: any = null;
 
+  validatePlayer = new BehaviorSubject<boolean>(true);
+
   constructor(private spotifyService: SpotifyService) {
     this.obterMusicaAtual();
   }
@@ -41,4 +43,24 @@ export class PlayerService {
   async proximaMusica() {
     await this.spotifyService.proximaMusica();
   }
+
+  async playMusica(){
+    this.validateMusica(false)
+    await this.spotifyService.playMusica();
+  }
+
+  async pauseMusica(){
+    this.validateMusica(true)
+    await this.spotifyService.pauseMusica();
+  }
+
+ validateMusica(v: boolean){
+    this.validatePlayer.next(v);
+  }
+
+  async execMusic(id: string){
+    this.validateMusica(false)
+    await this.spotifyService.executarMusica(id)
+  }
+
 }

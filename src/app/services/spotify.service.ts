@@ -121,6 +121,14 @@ export class SpotifyService {
     await this.spotifyApi.skipToNext();
   }
 
+  async playMusica(){
+    await this.spotifyApi.play();
+  }
+
+  async pauseMusica(){
+    await this.spotifyApi.pause();
+  }
+
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);

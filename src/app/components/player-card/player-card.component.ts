@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { faStepBackward, faStepForward } from '@fortawesome/free-solid-svg-icons';
+import { faPauseCircle, faPlayCircle, faStepBackward, faStepForward } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { newMusica } from 'src/app/Common/factories';
 import { IMusica } from 'src/app/interfaces/IMusica';
@@ -14,20 +14,27 @@ import { PlayerService } from './../../services/player.service';
 export class PlayerCardComponent implements OnInit, OnDestroy {
 
   musica: IMusica = newMusica();
-  subs: Subscription[] = []
+  subs: Subscription[] = [];
+  subsPlayOrPause: Subscription[] = [];
 
   // Icones
   anteriorIcone = faStepBackward;
   proximoIcone = faStepForward;
+  playIcone = faPlayCircle;
+  pauseIcone = faPauseCircle;
+
+  validatePlayer: boolean = true;
 
   constructor(private playerService: PlayerService) { }
 
   ngOnInit(): void {
     this.obterMusicaTocando();
+    this.playOrPause()
   }
 
   ngOnDestroy(): void {
     this.subs.forEach(sub => sub.unsubscribe());
+    this.subsPlayOrPause.forEach(s => s.unsubscribe());
   }
 
   obterMusicaTocando() {
@@ -44,6 +51,22 @@ export class PlayerCardComponent implements OnInit, OnDestroy {
 
   proximaMusica() {
     this.playerService.proximaMusica();
+  }
+
+  playMusica(){
+    this.playerService.playMusica();
+  }
+
+  pauseMusica(){
+    this.playerService.pauseMusica();
+  }
+
+  playOrPause(){
+    const sub = this.playerService.validatePlayer.subscribe(v => {
+      this.validatePlayer = v
+    })
+
+    this.subsPlayOrPause.push(sub)
   }
 
 }

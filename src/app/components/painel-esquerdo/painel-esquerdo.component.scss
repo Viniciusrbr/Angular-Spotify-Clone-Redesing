@@ -24,6 +24,8 @@ $h-desconsiderar: calc($h-spotify-logo + $h-menu-opcoes + $h-footer-user);
 
     .image-container {
       min-height: $h-spotify-logo;
+      background-image: linear-gradient(135deg, #0077C2, #E8F2FE);
+      border-radius:20px;
 
       img {
         width: 70%;
@@ -32,7 +34,6 @@ $h-desconsiderar: calc($h-spotify-logo + $h-menu-opcoes + $h-footer-user);
 
     .menu-container {
       width: 100%;
-
       &.flex {
         flex-direction: column;
         justify-content: flex-start;
